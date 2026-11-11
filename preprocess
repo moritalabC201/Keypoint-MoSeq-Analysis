@@ -1,0 +1,26 @@
+# =========================
+# 0. Imports and global settings
+# =========================
+
+import os
+# Must be set before importing jax / jax_moseq / keypoint_moseq
+os.environ["XLA_PYTHON_CLIENT_PREALLOCATE"] = "false"
+os.environ["XLA_PYTHON_CLIENT_MEM_FRACTION"] = "0.85"
+os.environ["TF_GPU_ALLOCATOR"] = "cuda_malloc_async"
+
+# (Now import jax)
+#import jax
+#jax.config.update("jax_enable_x64", False)
+
+# Important: set JAX precision before importing keypoint_moseq.
+import jax
+jax.config.update("jax_enable_x64", False)
+
+from pathlib import Path
+from datetime import datetime
+import shutil
+from contextlib import contextmanager
+
+import matplotlib.pyplot as plt
+import keypoint_moseq as kpms
+import numpy as np 
